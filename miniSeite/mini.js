@@ -5,7 +5,7 @@ function init() {
         node.innerHTML = "Weißt du nicht wie du heißt ?";
     }
     if (name.length >= 1) {
-        node.innerHTML = "WOW respekt an dich " + name + " du kannst deinen Namen schreiben.";
+        node.innerHTML = "WOW respekt an dich " + name.length + " du kannst deinen Namen schreiben.";
     }
 }
 window.addEventListener("load", init);
