@@ -5,7 +5,7 @@ var ctx: CanvasRenderingContext2D;
 var baume : number = 4;
 var wolke : number = 2;
 var berge : number = 4;
-
+var schneeflocke : number = 100;
 window.onload = () => {
    canvas = <HTMLCanvasElement>document.getElementById('cnvs');
    ctx = canvas.getContext("2d");
@@ -25,6 +25,11 @@ window.onload = () => {
         }
     
   
+}
+function schnee(x :number,y:number) :void{
+    ctx.arc(x+50, y, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = 'black';
+      ctx.fill();
 }
 function lieft(x :number,y:number) : void{
     

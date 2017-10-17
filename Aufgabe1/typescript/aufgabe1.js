@@ -4,6 +4,7 @@ var ctx;
 var baume = 4;
 var wolke = 2;
 var berge = 4;
+var schneeflocke = 100;
 window.onload = function () {
     canvas = document.getElementById('cnvs');
     ctx = canvas.getContext("2d");
@@ -21,6 +22,11 @@ window.onload = function () {
         baum(Math.round(Math.random() * 50 + i * 200), Math.round(Math.random() * 100 + 400));
     }
 };
+function schnee(x, y) {
+    ctx.arc(x + 50, y, 50, 0, 2 * Math.PI);
+    ctx.fillStyle = 'black';
+    ctx.fill();
+}
 function lieft(x, y) {
     ctx.beginPath();
     ctx.moveTo(x, y);
