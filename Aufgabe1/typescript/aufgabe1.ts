@@ -16,6 +16,10 @@ var schneePos : number[]=[];
 var skifahrer :number[]=[];
 window.addEventListener("load", draw);
 function draw() : void{
+    
+    var x :any = document.getElementById("leise"); 
+         x.play();  
+    
    canvas = <HTMLCanvasElement>document.getElementById('cnvs');
    crc2 = canvas.getContext("2d");
     himmel();
@@ -194,5 +198,7 @@ function baum(x :number,y:number) : void{
             }
         window.setTimeout(animate, zeit);
     }
+
+
 
 

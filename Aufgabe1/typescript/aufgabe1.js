@@ -14,6 +14,8 @@ var schneePos = [];
 var skifahrer = [];
 window.addEventListener("load", draw);
 function draw() {
+    var x = document.getElementById("leise");
+    x.play();
     canvas = document.getElementById('cnvs');
     crc2 = canvas.getContext("2d");
     himmel();
