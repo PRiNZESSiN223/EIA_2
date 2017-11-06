@@ -32,7 +32,7 @@ function draw() {
     for (var i = 0; i < schneeflocke; i++) {
         schneePos.push(Math.round(Math.random() + i * 10), Math.round(Math.random() * 600));
     }
-    skifahrer = [0, 100];
+    skifahrer = [0, 100, -50, 150];
     console.log(schneePos);
     animate();
 }
@@ -144,9 +144,15 @@ function animate() {
     }
     skifahrer[0] += 2 * speedSki;
     skifahrer[1] += 1.4 * speedSki;
+    skifahrer[2] += 4 * speedSki;
+    skifahrer[3] += 5 * speedSki;
     ski(skifahrer[0], skifahrer[1]);
+    ski(skifahrer[2], skifahrer[3]);
     if (skifahrer[0] > 810 && skifahrer[1] > 610) {
-        skifahrer = [-30, 100];
+        skifahrer = [-30, 100, skifahrer[2], skifahrer[3]];
+    }
+    if (skifahrer[2] > 810 && skifahrer[3] > 610) {
+        skifahrer = [skifahrer[0], skifahrer[1], -50, 150];
     }
     lieft(0, 0);
     for (var i = 0; i < baumPos.length; i++) {
