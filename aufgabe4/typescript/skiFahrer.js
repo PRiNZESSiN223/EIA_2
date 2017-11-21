@@ -2,6 +2,7 @@ var L05_Class;
 (function (L05_Class) {
     var SkiFahrer = (function () {
         function SkiFahrer(_x, _y) {
+            this.s = 0;
             this.x = _x;
             this.y = _y;
         }
@@ -24,12 +25,19 @@ var L05_Class;
             L05_Class.crc2.fill();
         };
         SkiFahrer.prototype.jump = function () {
-            this.y -= 100;
+            this.s = -4;
         };
         SkiFahrer.prototype.gravity = function () {
-            this.y += 5;
+            if (this.s < 0) {
+                this.s += 0.2;
+            }
+            else if (this.s > 0) {
+                this.s += 0.2;
+            }
+            this.y += this.s;
             if (this.y >= 300) {
                 this.y = 300;
+                this.s = 0;
             }
         };
         return SkiFahrer;
