@@ -3,6 +3,7 @@ namespace L05_Class {
         x: number;
         y: number;
         size : number;
+        s:number = 0;
         constructor(_x: number, _y: number) {
             this.x = _x;
             this.y = _y;
@@ -14,6 +15,7 @@ namespace L05_Class {
         update(): void {
         this.drawSki();
             this.gravity();
+
         }
     
 
@@ -34,14 +36,30 @@ namespace L05_Class {
         crc2.fill();
         }
         
-        jump(){
-            this.y -=100;
+          jump(){
+
+
+             this.s =-4;  
+
+            
         }
         gravity(){
-            this.y +=5;
+            if(this.s<0){
+                this.s +=0.2;
+                }
+            else if(this.s>0){
+                this.s +=0.2;
+                }
+             
+              this.y += this.s;  
+
+            
             if(this.y >= 300){
-              this.y =300;  
+                this.y=300;
+                this.s=0;
             }
+             
+
         }
 
     }
