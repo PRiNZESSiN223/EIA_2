@@ -1,24 +1,37 @@
-namespace Aufgabe4 {
+namespace Aufgabe5 {
     //let html : HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
-    var canvas: HTMLCanvasElement;
+  var canvas: HTMLCanvasElement;
     var crc2: CanvasRenderingContext2D;
+    
+        interface SkiFahrer {
+        x: number;
+        y: number;
+        dx: number;
+        dy: number;
+    }
+    
+    
     var baume: number = 4;
     var wolke: number = 4;
     var berge: number = 4;
     var schneeflocke: number = 100;
     var hintergrund: any;
-    var zeit: number = 100;
+    var zeit: number = 20;
     var speedSki: number = 6;
 
     var wolkenPos: number[][] =[];
     var baumPos: number[][] = [];
     var schneePos: number[][] = [];
-    var skifahrer: number[][] = [];
-    window.addEventListener("load", draw);
-    function draw(): void {
 
-        var x: any = document.getElementById("leise");
-        x.play();
+    
+    var skifahrer: SkiFahrer[] = [];
+
+    window.addEventListener("load", draw1);
+
+
+
+    function draw1(): void {
+
 
         canvas = <HTMLCanvasElement>document.getElementById('cnvs');
         crc2 = canvas.getContext("2d");
@@ -32,25 +45,31 @@ namespace Aufgabe4 {
         lieft(0, 0); //benutze ich für den Lieft 
         hintergrund = crc2.getImageData(0, 0, 800, 600);
 
-        for (let i: number = 0; i < baume; i++) {
-            baumPos[i][0] = (Math.round(Math.random() * 50 + i * 200 / (baume / 3)));
-            baumPos[i][1] = (Math.round(Math.random() * 50 + i * 200 / (baume / 3)));
+        for (let i: number = 0; i < wolke; i++) {
+            wolkenPos[i] = [(Math.round(Math.random() * 100 + 0 * 100 / (wolke / 7))),(Math.round(Math.random() * 100 + 0 * 100 / (wolke / 7)))];
+
         }
 
-        for (let i: number = 0; i < wolke; i++) {
-            wolkenPos[i][0] = (Math.round(Math.random() * 100 + 0 * 100 / (wolke / 7)));
-            wolkenPos[i][1] = (Math.round(Math.random() * 100 + 0 * 100 / (wolke / 7)));
+        for (let i: number = 0; i < baume; i++) {
+            baumPos[i] = [Math.random() * 400,Math.random() * 300+300 ];
         }
+
+
 
         for (let i: number = 0; i < schneeflocke; i++) {
-            schneePos[i][0] = (Math.round(Math.random() + i * 10), Math.round(Math.random() * 600));
-            schneePos[i][1] = (Math.round(Math.random() + i * 10), Math.round(Math.random() * 600));
+            schneePos[i] = [(Math.round(Math.random() * 800)),(Math.round(Math.random() * 600))];
+
 
         }
-        skifahrer[0][0] = 0;
-        skifahrer[0][1] = 100;
-        skifahrer[1][0] = -50;
-        skifahrer[1][1] = 150;
+        for (let i: number = 0; i < 3; i++) {
+            skifahrer[i] = {
+                x: Math.random() * (-10),
+                y: Math.random() * (-20) + 100,
+                dx: Math.random() * 1 + 1.5,
+                dy: Math.random() * 1 + 1.5
+
+            };
+        }
         console.log(schneePos);
 
         animate();
@@ -63,24 +82,25 @@ namespace Aufgabe4 {
         crc2.fillStyle = 'white';
         crc2.fill();
     }
-    function ski(x: number, y: number): void {
-
+    function drawAndMoveSkidriver(_Skidriver: SkiFahrer): void {
+        _Skidriver.x += _Skidriver.dx * 3;
+        _Skidriver.y += _Skidriver.dy * 2; //Steigung
         crc2.beginPath();
-        crc2.moveTo(x, y);
+        crc2.moveTo(_Skidriver.x, _Skidriver.y);
 
         crc2.fillStyle = "red";
-        crc2.fillRect(x, y - 50, 10, 50);
-        crc2.fillRect(x + 10, y - 40, 10, 5);
+        crc2.fillRect(_Skidriver.x, _Skidriver.y - 50, 10, 50);
+        crc2.fillRect(_Skidriver.x + 10, _Skidriver.y - 40, 10, 5);
         crc2.fillStyle = "black";
-        crc2.fillRect(x - 10, y, 50, 5);
-        crc2.fillRect(x + 20, y - 40, 3, 40);
+        crc2.fillRect(_Skidriver.x - 10, _Skidriver.y, 50, 5);
+        crc2.fillRect(_Skidriver.x + 20, _Skidriver.y - 40, 3, 40);
 
         crc2.beginPath();
-        crc2.arc(x + 10, y - 50, 10, 0, 2 * Math.PI);
+        crc2.arc(_Skidriver.x + 10, _Skidriver.y - 50, 10, 0, 2 * Math.PI);
         crc2.fillStyle = 'black';
         crc2.fill();
-
     }
+
     function lieft(x: number, y: number): void {
 
         crc2.beginPath();
@@ -162,37 +182,31 @@ namespace Aufgabe4 {
 
         for (let i: number = 0; i < wolke; i++) {
             wolkenPos[i][0] += 1;
-            wolken(wolkenPos[i][0], wolkenPos[i][0]);
-            
+            wolken(wolkenPos[i][0], wolkenPos[i][1]);
+
 
             if (wolkenPos[i][0] > 800) {
                 wolkenPos[i][0] = -100;
             }
-         }
-        
+        }
+
+
         for (let i: number = 0; i < schneePos.length; i++) {
-            i++
             schneePos[i][1] += 5;
 
             if (schneePos[i][1] > 600) {
                 schneePos[i][1] = 0;
             }
-            schnee(schneePos[i - 1], schneePos[i]);
+            schnee(schneePos[i][0], schneePos[i][1]);
 
         }
-        skifahrer[0][0] += 2 * speedSki;
-        skifahrer[0][1] += 1.4 * speedSki;
-        skifahrer[1][0] += 4 * speedSki;
-        skifahrer[1][1] += 5 * speedSki;
-        ski(skifahrer[0][0], skifahrer[0][1]);
-        ski(skifahrer[1][0], skifahrer[1][1]);
-        if (skifahrer[0][0] > 810 && skifahrer[0][1] > 610) {
-            skifahrer[0][0] = (-30);
-            skifahrer[0][1] = (100);
-        }
-         if (skifahrer[1][0] > 810 && skifahrer[1][1] > 610) {
-            skifahrer[1][0] = (-30);
-            skifahrer[1][1] = (100);
+        for (let i: number = 0; i < skifahrer.length; i++) {
+            drawAndMoveSkidriver(skifahrer[i]);
+
+            if (skifahrer[i].x > 800) {
+                skifahrer[i].x = 0;
+                skifahrer[i].y = 150;
+            }
         }
         lieft(0, 0);
         for (let i: number = 0; i < baumPos.length; i++) {
@@ -207,3 +221,5 @@ namespace Aufgabe4 {
 
 
 }
+
+
