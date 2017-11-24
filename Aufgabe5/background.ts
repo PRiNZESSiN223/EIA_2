@@ -12,17 +12,17 @@ namespace L06_Class {
 
 
 
-        drawHintergrund(){
+        drawHintergrund():void{
             this.drawSky();
             this.drawMountain();
             this.drawPiste();
             this.drawLift();
         }
-        drawSky(){
+        drawSky():void{
         crc3.fillStyle = "#A9E2F3";
         crc3.fillRect(this.x-20,this.y,900,600);    
         }
-        drawPiste(){
+        drawPiste():void{
             crc3.fillStyle = "#FFF";
             crc3.beginPath();
             crc3.moveTo(this.x,this.y+100);
