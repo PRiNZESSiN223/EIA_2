@@ -1,7 +1,7 @@
 namespace L06_Class {
     export class Baume {
-        x: number;
-        y: number;
+      private  x: number;
+      private  y: number;
 
         constructor(_x: number, _y: number) {
             this.x = _x;
@@ -10,7 +10,7 @@ namespace L06_Class {
         }
 
 
-        draw(): void {
+     public   draw(): void {
       crc3.fillStyle = "brown";
         crc3.fillRect(this.x, this.y, 50, 100);
 
