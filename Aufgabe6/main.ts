@@ -22,6 +22,10 @@ namespace L07_Class {
             moveObj.push(b);
             let w: Wolke = new Wolke(100, 150);
             moveObj.push(w);
+            for (let i: number = 0; i < 20; i++) { //5*20 = 100 Schneeflocken
+                    let sf: Snow = new Snow(100, 150);
+            moveObj.push(sf);  //sf Schneeflocke
+                }
 }
      /*   hintergrund.setRandomStyle(); */
 
