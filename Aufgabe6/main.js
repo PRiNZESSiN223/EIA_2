@@ -17,7 +17,7 @@ var L07_Class;
             var w = new L07_Class.Wolke(100, 150);
             moveObj.push(w);
             for (var i_1 = 0; i_1 < 20; i_1++) {
-                var sf = new L07_Class.Snow(100, 150);
+                var sf = new L07_Class.Snow(Math.random() * 800, Math.random() * 600);
                 moveObj.push(sf); //sf Schneeflocke
             }
         }
