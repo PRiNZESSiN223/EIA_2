@@ -1,0 +1,46 @@
+var L07_Class;
+(function (L07_Class) {
+    var hintergrund;
+    var moveObj = [];
+    //let skis: Ski[] = [];
+    window.addEventListener("load", init);
+    function init() {
+        var canvas = document.getElementsByTagName("canvas")[0];
+        console.log(canvas);
+        L07_Class.crc3 = canvas.getContext("2d");
+        hintergrund = new L07_Class.Hintergrund(0, 0, 0); //übergabe von werten + farbe (farbe war test wegen problemen)
+        for (var i = 0; i < 5; i++) {
+            var s = new L07_Class.Ski(300, 150);
+            moveObj.push(s);
+            var b = new L07_Class.Baume(100, 150);
+            moveObj.push(b);
+            var w = new L07_Class.Wolke(100, 150);
+            moveObj.push(w);
+        }
+        /*   hintergrund.setRandomStyle(); */
+        /*
+                for (let i: number = 0; i < 30; i++) {
+                    let s: Ski = new Ski(200, 150);
+                    s.setRandomStyle();
+                    skis[i] = s;
+                }
+        */
+        animate();
+    }
+    function animate() {
+        L07_Class.crc3.clearRect(0, 0, 800, 600); // hier Hintergrund restaurieren
+        hintergrund.drawHintergrund(); //hintergrund wird gezeichnet
+        for (var i = 0; i < moveObj.length; i++) {
+            var m = moveObj[i];
+            m.update();
+        }
+        /*
+                for (let i: number = 0; i < skis.length; i++) {
+                    let s: Ski = skis[i];
+                    s.update();
+                }
+        */
+        window.setTimeout(animate, 20);
+    }
+})(L07_Class || (L07_Class = {}));
+//# sourceMappingURL=main.js.map

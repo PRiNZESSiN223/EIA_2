@@ -152,4 +152,4 @@ var Aufgabe5;
         window.setTimeout(animate, zeit);
     }
 })(Aufgabe5 || (Aufgabe5 = {}));
-//# sourceMappingURL=aufgabe4.js.map
+//# sourceMappingURL=aufgabe1.js.map
