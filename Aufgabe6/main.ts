@@ -16,11 +16,11 @@ namespace L07_Class {
         hintergrund = new Hintergrund(0, 0, 0); //übergabe von werten + farbe (farbe war test wegen problemen)
         
         for (let i: number = 0; i < 5; i++) {
-            let s: Ski = new Ski(300, 150);
+            let s: Ski = new Ski(Math.random()*30+800, Math.random()*30);
             moveObj.push(s);
-            let b: Baume = new Baume(100, 150);
+            let b: Baume = new Baume(Math.random()*400+400, Math.random()*200+300);
             moveObj.push(b);
-            let w: Wolke = new Wolke(100, 150);
+            let w: Wolke = new Wolke(Math.random()*800, Math.random()*600);
             moveObj.push(w);
             for (let i: number = 0; i < 20; i++) { //5*20 = 100 Schneeflocken
                     let sf: Snow = new Snow(Math.random()*800, Math.random()*600);
