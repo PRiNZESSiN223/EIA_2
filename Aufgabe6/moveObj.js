@@ -10,10 +10,8 @@ var L07_Class;
             this.draw();
         };
         MoveObj.prototype.move = function () {
-            // Sonst ist der Block leer.
         };
         MoveObj.prototype.draw = function () {
-            // Sonst ist der Block leer.
         };
         return MoveObj;
     }());

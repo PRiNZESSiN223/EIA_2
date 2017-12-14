@@ -16,26 +16,26 @@ var L07_Class;
             this.draw();
         };
         Ski.prototype.move = function () {
-            this.x -= this.speed; // hier experimentieren um
+            this.x += this.speed; // hier experimentieren um
             this.y += this.speed / 1.5; // andere Bewegungsmuster zu finden
-            if (this.x <= 0) {
-                this.x = 820;
+            if (this.x > 800) {
+                this.x = -30;
                 this.y = 100 * Math.random() + 100;
             }
         };
         Ski.prototype.draw = function () {
-            L07_Class.crc3.fillStyle = "#000000";
-            L07_Class.crc3.fillRect(this.x, this.y, 10, -23);
-            L07_Class.crc3.fillStyle = "#000000";
             L07_Class.crc3.beginPath();
-            L07_Class.crc3.arc(this.x + 5, this.y - 23, 7, 0, 2 * Math.PI);
+            L07_Class.crc3.moveTo(this.x, this.y);
+            L07_Class.crc3.fillStyle = "red";
+            L07_Class.crc3.fillRect(this.x, this.y - 50, 10, 50);
+            L07_Class.crc3.fillRect(this.x + 10, this.y - 40, 10, 5);
+            L07_Class.crc3.fillStyle = "black";
+            L07_Class.crc3.fillRect(this.x - 10, this.y, 50, 5);
+            L07_Class.crc3.fillRect(this.x + 20, this.y - 40, 3, 40);
+            L07_Class.crc3.beginPath();
+            L07_Class.crc3.arc(this.x + 10, this.y - 50, 10, 0, 2 * Math.PI);
+            L07_Class.crc3.fillStyle = 'black';
             L07_Class.crc3.fill();
-            L07_Class.crc3.stroke();
-            L07_Class.crc3.fillStyle = "#000000";
-            L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(this.x + 20, this.y - 4);
-            L07_Class.crc3.lineTo(this.x - 20, this.y + 4);
-            L07_Class.crc3.stroke();
         };
         return Ski;
     }(L07_Class.MoveObj));

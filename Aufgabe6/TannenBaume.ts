@@ -9,26 +9,13 @@ namespace L07_Class {
 
 
         draw(): void {
-      //Stamm
-        crc3.fillStyle = "#604629";
-        crc3.fillRect(this.x, this.y, 20, 12);
+      crc3.fillStyle = "brown";
+        crc3.fillRect(this.x, this.y, 50, 100);
 
-        //Krone von unten nach oben
-        crc3.fillStyle = "#517a17";
         crc3.beginPath();
-        crc3.moveTo(this.x - 30, this.y);
-        crc3.lineTo(this.x + 50, this.y);
-        crc3.lineTo(this.x + 10, this.y - 70);
-        crc3.fill();
-        crc3.closePath();
-
-        crc3.fillStyle = "#517a17";
-        crc3.beginPath();
-        crc3.moveTo(this.x - 25, this.y - 20);
-        crc3.lineTo(this.x + 45, this.y - 20);
-        crc3.lineTo(this.x + 10, this.y - 100);
-        crc3.fill();
-        crc3.closePath();
+        crc3.arc(this.x + 25, this.y - 20, 50, 0, 2 * Math.PI);
+        crc3.fillStyle = "green";
+crc3.fill();
         }
 
     }

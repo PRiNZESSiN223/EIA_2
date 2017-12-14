@@ -25,22 +25,11 @@ namespace L07_Class {
         }
 
         draw(): void {
-        crc3.beginPath();
-        crc3.arc(this.x, 70, 30, 0, 2 * Math.PI);
-        crc3.fillStyle = "#FAFAFA";
-        crc3.fill();
-        crc3.beginPath();
-        crc3.arc(this.x + 60, 70, 30, 0, 2 * Math.PI);
-        crc3.fillStyle = "#FAFAFA";
-        crc3.fill();
-        crc3.beginPath();
-        crc3.arc(this.x + 30, 55, 30, 0, 2 * Math.PI);
-        crc3.fillStyle = "#FAFAFA";
-        crc3.fill();
-        crc3.beginPath();
-        crc3.arc(this.x + 30, 85, 30, 0, 2 * Math.PI);
-        crc3.fillStyle = "#FAFAFA";
-        crc3.fill();
+      crc3.beginPath();
+            crc3.fillStyle = "blue";
+            crc3.arc(this.x, this.y, 50, 0, 2 * Math.PI);
+            crc3.arc(this.x + 50, this.y, 50, 0, 2 * Math.PI);
+crc3.fill();
         }
 
     }

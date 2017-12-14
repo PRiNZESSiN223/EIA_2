@@ -1,95 +1,81 @@
+
 namespace L07_Class {
     export class Hintergrund {
-        x: number;
-        y: number;
-        size: number[] = [];
-        color: number;
-        constructor(_x: number, _y: number, _c: number) { //Übergabe x-y Werte
-            this.x = _x; //this definiert innerhalb einer klasse 
+        private x: number;
+        private y: number;
+        private size: number[] = [];
+        private color: number;
+        constructor(_x: number, _y: number, _c: number) {
+            this.x = _x;
             this.y = _y;
             this.color = _c;
         }
 
 
 
-        drawHintergrund(): void {
+        public drawHintergrund(): void {
             this.drawSky();
             this.drawMountain();
             this.drawPiste();
             this.drawLift();
         }
-        drawSky(): void {
-            //Himmel
-            crc3.fillStyle = "#42b6f4"; //2Dimensionaler Befehl für canvas
-            crc3.fillRect(0, 0, 800, 600);
+        public drawSky(): void {
+            crc3.fillStyle = "#A9E2F3";
+            crc3.fillRect(this.x - 20, this.y, 900, 600);
         }
-        drawPiste(): void {
-            //Piste
+        public drawPiste(): void {
+            crc3.fillStyle = "#FFF";
             crc3.beginPath();
-            crc3.moveTo(0, 450);
-            crc3.lineTo(800, 0);
+            crc3.moveTo(this.x, this.y + 100);
             crc3.lineTo(800, 600);
             crc3.lineTo(0, 600);
-            crc3.closePath();
-            crc3.stroke();
-            crc3.fillStyle = "#E8EEEE";
             crc3.fill();
         }
-        drawLift(): void {
-            //Lift
+        public drawLift(): void {
             crc3.beginPath();
-            crc3.moveTo(0, 400);
-            crc3.lineTo(725, 0);
-            crc3.closePath();
-            crc3.stroke(); // Zeichne Linie 
-            crc3.beginPath();
-            crc3.moveTo(250, 261);
-            crc3.lineTo(250, 300);
+            crc3.moveTo(this.x, this.y);
+            crc3.lineTo(800, 550);
+            crc3.lineWidth = 2;
+
+            crc3.strokeStyle = 'black';
             crc3.stroke();
-            //horizontal
-            crc3.beginPath();
-            crc3.moveTo(240, 300);
-            crc3.lineTo(260, 300);
-            crc3.stroke();
+            crc3.fillStyle = "grey";
+            crc3.fillRect(this.x + 250, this.y + 170, 10, 100);
+            crc3.fillRect(this.x + 200, this.y + 200, 100, 100);
+            crc3.fillStyle = "white";
+            crc3.fillRect(this.x + 210, this.y + 210, 80, 80);
+
         }
 
-        drawMountain(): void {
+        public drawMountain(): void {
 
-            //Berg 1
-            crc3.fillStyle = "#a9a9a9"; //Farbe
-            crc3.beginPath(); //Starte
-            crc3.moveTo(175, 100); //Beweg dich zu dem Startpunkt
-            crc3.lineTo(350, 550); //Beweg dich zu den Koordinaten
-            crc3.lineTo(0, 550); // Beweg dich nochmal zu den Koordinaten
-            crc3.fill(); // Fülle aus mit Fillstyle
-            //Berg 2
-            crc3.fillStyle = "#a9a9a9";
-            crc3.beginPath();
-            crc3.moveTo(300, 30); //hoehe
-            crc3.lineTo(500, 500);
-            crc3.lineTo(100, 500);
-            crc3.fill();
+            for (let i: number = 0; i < 5; i++) {
 
-            //Berg 3
-            crc3.fillStyle = "#a9a9a9";
-            crc3.beginPath();
-            crc3.moveTo(400, 130); //hoehe
-            crc3.lineTo(600, 500);
-            crc3.lineTo(200, 500);
-            crc3.fill();
+                crc3.beginPath();
+                crc3.moveTo(this.x + (i * 180), this.y + (this.size[i] / 2));
+                crc3.lineWidth = 1;
+                crc3.lineTo(this.x + (i * 180) + this.size[i] * 2, this.y + this.size[i] + 500);
+                crc3.lineTo(this.x + (i * 180) - this.size[i] * 2, this.y + this.size[i] + 500);
+                if (this.color == 0) {
+                    crc3.fillStyle = "#666";
+                }
+                else {
+                    crc3.fillStyle = "red";
+                }
+                crc3.fill();
+
+            }
         }
 
-    /*    setRandomStyle(): void { 
+        public setRandomStyle(): void {
+
             for (let i: number = 0; i < 5; i++) {
                 this.size[i] = Math.random() * 200 + 50;
             }
-        }    Für size (Berge o.ä.)                           */
+        }
 
 
     }
 }
-
-
-
 
 

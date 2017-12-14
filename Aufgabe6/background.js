@@ -3,7 +3,7 @@ var L07_Class;
     var Hintergrund = (function () {
         function Hintergrund(_x, _y, _c) {
             this.size = [];
-            this.x = _x; //this definiert innerhalb einer klasse 
+            this.x = _x;
             this.y = _y;
             this.color = _c;
         }
@@ -14,61 +14,50 @@ var L07_Class;
             this.drawLift();
         };
         Hintergrund.prototype.drawSky = function () {
-            //Himmel
-            L07_Class.crc3.fillStyle = "#42b6f4"; //2Dimensionaler Befehl für canvas
-            L07_Class.crc3.fillRect(0, 0, 800, 600);
+            L07_Class.crc3.fillStyle = "#A9E2F3";
+            L07_Class.crc3.fillRect(this.x - 20, this.y, 900, 600);
         };
         Hintergrund.prototype.drawPiste = function () {
-            //Piste
+            L07_Class.crc3.fillStyle = "#FFF";
             L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(0, 450);
-            L07_Class.crc3.lineTo(800, 0);
+            L07_Class.crc3.moveTo(this.x, this.y + 100);
             L07_Class.crc3.lineTo(800, 600);
             L07_Class.crc3.lineTo(0, 600);
-            L07_Class.crc3.closePath();
-            L07_Class.crc3.stroke();
-            L07_Class.crc3.fillStyle = "#E8EEEE";
             L07_Class.crc3.fill();
         };
         Hintergrund.prototype.drawLift = function () {
-            //Lift
             L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(0, 400);
-            L07_Class.crc3.lineTo(725, 0);
-            L07_Class.crc3.closePath();
-            L07_Class.crc3.stroke(); // Zeichne Linie 
-            L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(250, 261);
-            L07_Class.crc3.lineTo(250, 300);
+            L07_Class.crc3.moveTo(this.x, this.y);
+            L07_Class.crc3.lineTo(800, 550);
+            L07_Class.crc3.lineWidth = 2;
+            L07_Class.crc3.strokeStyle = 'black';
             L07_Class.crc3.stroke();
-            //horizontal
-            L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(240, 300);
-            L07_Class.crc3.lineTo(260, 300);
-            L07_Class.crc3.stroke();
+            L07_Class.crc3.fillStyle = "grey";
+            L07_Class.crc3.fillRect(this.x + 250, this.y + 170, 10, 100);
+            L07_Class.crc3.fillRect(this.x + 200, this.y + 200, 100, 100);
+            L07_Class.crc3.fillStyle = "white";
+            L07_Class.crc3.fillRect(this.x + 210, this.y + 210, 80, 80);
         };
         Hintergrund.prototype.drawMountain = function () {
-            //Berg 1
-            L07_Class.crc3.fillStyle = "#a9a9a9"; //Farbe
-            L07_Class.crc3.beginPath(); //Starte
-            L07_Class.crc3.moveTo(175, 100); //Beweg dich zu dem Startpunkt
-            L07_Class.crc3.lineTo(350, 550); //Beweg dich zu den Koordinaten
-            L07_Class.crc3.lineTo(0, 550); // Beweg dich nochmal zu den Koordinaten
-            L07_Class.crc3.fill(); // Fülle aus mit Fillstyle
-            //Berg 2
-            L07_Class.crc3.fillStyle = "#a9a9a9";
-            L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(300, 30); //hoehe
-            L07_Class.crc3.lineTo(500, 500);
-            L07_Class.crc3.lineTo(100, 500);
-            L07_Class.crc3.fill();
-            //Berg 3
-            L07_Class.crc3.fillStyle = "#a9a9a9";
-            L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(400, 130); //hoehe
-            L07_Class.crc3.lineTo(600, 500);
-            L07_Class.crc3.lineTo(200, 500);
-            L07_Class.crc3.fill();
+            for (var i = 0; i < 5; i++) {
+                L07_Class.crc3.beginPath();
+                L07_Class.crc3.moveTo(this.x + (i * 180), this.y + (this.size[i] / 2));
+                L07_Class.crc3.lineWidth = 1;
+                L07_Class.crc3.lineTo(this.x + (i * 180) + this.size[i] * 2, this.y + this.size[i] + 500);
+                L07_Class.crc3.lineTo(this.x + (i * 180) - this.size[i] * 2, this.y + this.size[i] + 500);
+                if (this.color == 0) {
+                    L07_Class.crc3.fillStyle = "#666";
+                }
+                else {
+                    L07_Class.crc3.fillStyle = "red";
+                }
+                L07_Class.crc3.fill();
+            }
+        };
+        Hintergrund.prototype.setRandomStyle = function () {
+            for (var i = 0; i < 5; i++) {
+                this.size[i] = Math.random() * 200 + 50;
+            }
         };
         return Hintergrund;
     }());

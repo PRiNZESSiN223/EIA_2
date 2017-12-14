@@ -10,11 +10,11 @@ var L07_Class;
         L07_Class.crc3 = canvas.getContext("2d");
         hintergrund = new L07_Class.Hintergrund(0, 0, 0); //übergabe von werten + farbe (farbe war test wegen problemen)
         for (var i = 0; i < 5; i++) {
-            var s = new L07_Class.Ski(Math.random() * 30 + 800, Math.random() * 30);
+            var s = new L07_Class.Ski(Math.random() * 30 - 30, Math.random() * 30 + 200);
             moveObj.push(s);
-            var b = new L07_Class.Baume(Math.random() * 400 + 400, Math.random() * 200 + 300);
+            var b = new L07_Class.Baume(Math.random() * 200 + 100, Math.random() * 200 + 400);
             moveObj.push(b);
-            var w = new L07_Class.Wolke(Math.random() * 800, Math.random() * 600);
+            var w = new L07_Class.Wolke(Math.random() * 800, Math.random() * 100);
             moveObj.push(w);
             for (var i_1 = 0; i_1 < 20; i_1++) {
                 var sf = new L07_Class.Snow(Math.random() * 800, Math.random() * 600);

@@ -1,6 +1,6 @@
 namespace L07_Class {
 
-    export class MoveObj { // "export class": Bedeutet das andere Klassen auf diese zugreifen.
+    export class MoveObj { 
         x: number;
         y: number;
 
@@ -19,11 +19,11 @@ namespace L07_Class {
         }
         
         move(): void {
-            // Sonst ist der Block leer.
+
             }
         
         draw(): void {
-            // Sonst ist der Block leer.
+
             }    
         
     }

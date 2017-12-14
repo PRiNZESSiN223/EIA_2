@@ -11,24 +11,12 @@ var L07_Class;
             _super.call(this, _x, _y);
         }
         Baume.prototype.draw = function () {
-            //Stamm
-            L07_Class.crc3.fillStyle = "#604629";
-            L07_Class.crc3.fillRect(this.x, this.y, 20, 12);
-            //Krone von unten nach oben
-            L07_Class.crc3.fillStyle = "#517a17";
+            L07_Class.crc3.fillStyle = "brown";
+            L07_Class.crc3.fillRect(this.x, this.y, 50, 100);
             L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(this.x - 30, this.y);
-            L07_Class.crc3.lineTo(this.x + 50, this.y);
-            L07_Class.crc3.lineTo(this.x + 10, this.y - 70);
+            L07_Class.crc3.arc(this.x + 25, this.y - 20, 50, 0, 2 * Math.PI);
+            L07_Class.crc3.fillStyle = "green";
             L07_Class.crc3.fill();
-            L07_Class.crc3.closePath();
-            L07_Class.crc3.fillStyle = "#517a17";
-            L07_Class.crc3.beginPath();
-            L07_Class.crc3.moveTo(this.x - 25, this.y - 20);
-            L07_Class.crc3.lineTo(this.x + 45, this.y - 20);
-            L07_Class.crc3.lineTo(this.x + 10, this.y - 100);
-            L07_Class.crc3.fill();
-            L07_Class.crc3.closePath();
         };
         return Baume;
     }(L07_Class.MoveObj));
