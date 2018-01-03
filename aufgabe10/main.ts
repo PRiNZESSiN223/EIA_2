@@ -11,9 +11,9 @@ namespace Aufgabe10 {
     var label: HTMLLabelElement;
     let checkedId: string[] = [];
 
-    var baumArt: string[] = ["Nordmantanne", "31.55"];
+    var baumArt: string[] = [posten[0].name,""+posten[1].preis];
     var halter: string[] = ["Halter", " noch auswählen 0"];
-    var beleuchtung: string[] = ["Lichterkette","31.55"];
+    var beleuchtung: string[] = [posten[8].name,""+posten[8].preis];
     var schmuck: string[][] = [];
     
     function createElements(): void {

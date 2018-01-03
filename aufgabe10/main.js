@@ -11,9 +11,9 @@ var Aufgabe10;
     var zusatz;
     var label;
     var checkedId = [];
-    var baumArt = ["Nordmantanne", "31.55"];
+    var baumArt = [Aufgabe10.posten[0].name, "" + Aufgabe10.posten[1].preis];
     var halter = ["Halter", " noch auswählen 0"];
-    var beleuchtung = ["Lichterkette", "31.55"];
+    var beleuchtung = [Aufgabe10.posten[8].name, "" + Aufgabe10.posten[8].preis];
     var schmuck = [];
     function createElements() {
         //Baumart:
