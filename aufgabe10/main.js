@@ -22,6 +22,13 @@ var Aufgabe10;
         selectBox.name = "SelectBaumart";
         selectBox.id = "selectBaumart";
         baumart.appendChild(selectBox);
+        var halterung = document.getElementById("halterung");
+        var beleuchtung = document.getElementById("beleuchtung");
+        var selectBox2 = document.createElement("select");
+        selectBox2.name = "SelectBeleuchtung";
+        selectBox2.id = "selectBeleuchtung";
+        beleuchtung.appendChild(selectBox2);
+        var schmuckartikel = document.getElementById("schmuckartikel");
         for (var i = 0; i < Aufgabe10.posten.length; i++) {
             if (Aufgabe10.posten[i].art == "Baumart") {
                 var opt = document.createElement("option");
@@ -29,11 +36,7 @@ var Aufgabe10;
                 opt.id = "option" + i;
                 selectBox.appendChild(opt);
             }
-        }
-        //Halterung:
-        var halterung = document.getElementById("halterung");
-        for (var i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Halter") {
+            else if (Aufgabe10.posten[i].art == "Halter") {
                 var radioB = document.createElement("input");
                 radioB.type = "radio";
                 radioB.name = "radioGroupHalterung";
@@ -46,25 +49,13 @@ var Aufgabe10;
                 label.innerText = Aufgabe10.posten[i].name;
                 halterung.appendChild(label);
             }
-        }
-        //Beleuchtung:
-        var beleuchtung = document.getElementById("beleuchtung");
-        var selectBox2 = document.createElement("select");
-        selectBox2.name = "SelectBeleuchtung";
-        selectBox2.id = "selectBeleuchtung";
-        beleuchtung.appendChild(selectBox2);
-        for (var i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Beleuchtung") {
+            else if (Aufgabe10.posten[i].art == "Beleuchtung") {
                 var opt2 = document.createElement("option");
                 opt2.innerText = Aufgabe10.posten[i].name;
                 opt2.id = "option2." + i;
                 selectBox2.appendChild(opt2);
             }
-        }
-        //Schmuckartikel:
-        var schmuckartikel = document.getElementById("schmuckartikel");
-        for (var i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Schmuck") {
+            else if (Aufgabe10.posten[i].art == "Schmuck") {
                 var checkB = document.createElement("input");
                 checkB.type = "checkbox";
                 checkB.name = "CheckboxSchmuckartikel";
@@ -93,25 +84,28 @@ var Aufgabe10;
         name.type = "text";
         name.name = "DatenName";
         name.placeholder = "Name";
+        name.pattern = "[a-z]";
         name.required = true;
         daten.appendChild(name);
         strasse = document.createElement("input");
         strasse.type = "text";
         strasse.name = "DatenStrasse";
         strasse.placeholder = "Straße";
+        strasse.pattern = "[a-z]";
         strasse.required = true;
         daten.appendChild(strasse);
         hNr = document.createElement("input");
         hNr.type = "text";
         hNr.name = "DatenHausnummer";
-        hNr.placeholder = "Hausnummer, bitte 3-stellig";
-        hNr.pattern = "[0-9]{3}";
+        hNr.placeholder = "Hausnummer";
+        hNr.pattern = "[0-9]";
         hNr.required = true;
         daten.appendChild(hNr);
         ort = document.createElement("input");
         ort.type = "text";
         ort.name = "DatenOrt";
         ort.placeholder = "Ort";
+        ort.pattern = "[a-z]";
         ort.required = true;
         daten.appendChild(ort);
         plz = document.createElement("input");
@@ -204,122 +198,18 @@ var Aufgabe10;
             }
         }
         korb.innerHTML += " Gesamtpreis : " + gesamtpreis + "€";
-        /* console.log(_event.target);
-         let zsmfassung: HTMLDivElement = <HTMLDivElement>document.getElementById("zusammenfassung");
-         var create: HTMLParagraphElement = document.createElement("p");
- 
-         zsmfassung.appendChild(create);
-         let radiogroup: HTMLInputElement;
-         radiogroup = <HTMLInputElement>(document.querySelector("input[name=radioGroupHalterung]:checked"));
-         console.log(radiogroup.value);
- 
- */
-        /*  let target: HTMLSelectElement = <HTMLSelectElement>_event.target;
-          // console.log("Changed " + target.name + " to " + target.value);
-          let zsmfassung: HTMLDivElement = <HTMLDivElement>document.getElementById("zusammenfassung");
-          if (target.id == "selectBaumart") {
-              let selectElement: HTMLSelectElement = <HTMLSelectElement>_event.target;
-              let index: number = selectElement.selectedIndex;
-              //console.log("Index: " + index);
-              //console.log("Options: " + selectElement.options);
-              //console.log("Selected: " + selectElement.options[index]);
-              //console.log(selectElement.options[index].textContent);
-              var create: HTMLParagraphElement = document.createElement("p");
-              create.className = "warenkorbContent";
-              create.innerText = selectElement.options[index].textContent + baumarten[index].preis;
-              zsmfassung.appendChild(create);
-          }
-          if (target.name == "radioGroupHalterung") {
-              let inputElement: HTMLInputElement = <HTMLInputElement>_event.target;
-              if (inputElement.checked && inputElement.id == "radio0") {
-                  let labelId: HTMLLabelElement = <HTMLLabelElement>document.getElementById("label0");
-                  var create: HTMLParagraphElement = document.createElement("p");
-                  create.className = "warenkorbContent";
-                  create.innerText = labelId.innerText + halterungen[0].preis;
-                  zsmfassung.appendChild(create);
-              }
-              if (inputElement.checked && inputElement.id == "radio1") {
-                  let labelId: HTMLLabelElement = <HTMLLabelElement>document.getElementById("label1");
-                  var create: HTMLParagraphElement = document.createElement("p");
-                  create.className = "warenkorbContent";
-                  create.innerText = labelId.innerText + halterungen[1].preis;
-                  zsmfassung.appendChild(create);
-              }
-              if (inputElement.checked && inputElement.id == "radio2") {
-                  let labelId: HTMLLabelElement = <HTMLLabelElement>document.getElementById("label2");
-                  var create: HTMLParagraphElement = document.createElement("p");
-                  create.className = "warenkorbContent";
-                  create.innerText = labelId.innerText + halterungen[2].preis;
-                  zsmfassung.appendChild(create);
-              }
-              if (inputElement.checked && inputElement.id == "radio3") {
-                  let labelId: HTMLLabelElement = <HTMLLabelElement>document.getElementById("label3");
-                  var create: HTMLParagraphElement = document.createElement("p");
-                  create.className = "warenkorbContent";
-                  create.innerText = labelId.innerText + halterungen[3].preis;
-                  zsmfassung.appendChild(create);
-              }
-          }
-  
-          if (target.id == "selectBeleuchtung") {
-              let selectElement: HTMLSelectElement = <HTMLSelectElement>_event.target;
-              let index: number = selectElement.selectedIndex;
-              var create: HTMLParagraphElement = document.createElement("p");
-              create.className = "warenkorbContent";
-              create.innerText = selectElement.options[index].textContent + beleuchtungen[index].preis;
-              zsmfassung.appendChild(create);
-          }
-          if (target.name == "radioGroupLieferoptionen") {
-              let inputElement: HTMLInputElement = <HTMLInputElement>_event.target;
-              console.log(inputElement.id);
-              if (inputElement.checked && inputElement.id == "radio2.0") {
-                  let labelId: HTMLLabelElement = <HTMLLabelElement>document.getElementById("label3.0");
-                  var create: HTMLParagraphElement = document.createElement("p");
-                  create.className = "warenkorbContent";
-                  create.innerText = labelId.innerText + lieferOptionen[0].preis;
-                  zsmfassung.appendChild(create);
-              }
-              if (inputElement.checked && inputElement.id == "radio2.1") {
-                  let labelId: HTMLLabelElement = <HTMLLabelElement>document.getElementById("label3.1");
-                  var create: HTMLParagraphElement = document.createElement("p");
-                  create.className = "warenkorbContent";
-                  create.innerText = labelId.innerText + lieferOptionen[1].preis;
-                  zsmfassung.appendChild(create);
-              }
-          }
-          if (target.id == "check") {
-              let inputElement: HTMLInputElement = <HTMLInputElement>_event.target;
-              for (let i: number = 0; i < schmuck.length; i++) {
-                  if (inputElement.checked == true) {
-                      let labelId: HTMLLabelElement = <HTMLLabelElement>document.getElementById("label2." + i);
-                      let text: string = labelId.innerText;
-                      console.log(labelId.innerText);
-                      checkedId.push(text);
-                      console.log("array:" + checkedId);
-                      console.log(checkedId.length);
-  
-                  }
-              }
-              for (let i: number = 0; i < checkedId.length; i++) {
-                  var create: HTMLParagraphElement = document.createElement("p");
-                  create.className = "warenkorbContent";
-                  create.innerText = checkedId[i];
-                  zsmfassung.appendChild(create);
-              }
-  
-          }
-  
-  */
     }
     function handleMouseDown(_event) {
         var feedback = document.createElement("div");
         if (name.checkValidity() == false || strasse.checkValidity() == false || hNr.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
             feedback.innerText = "Info zu deiner Bestellung: Du scheinst Deine Daten nicht korrekt angegeben zu haben. Bitte überprüfe sie nocheinmal.";
+            feedback.style.color = "red";
             document.body.appendChild(feedback);
         }
         else {
             feedback.innerText = "Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.";
-            document.body.appendChild(feedback);
+            feedback.style.color = "green";
+            document.body.replaceChild(feedback, feedback);
         }
     }
 })(Aufgabe10 || (Aufgabe10 = {}));
