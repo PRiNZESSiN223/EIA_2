@@ -218,8 +218,8 @@ namespace Aufgabe10 {
 
             }
             else if (target.value == posten[i].name && target.id == "selectBeleuchtung") {
-                beleuchtung[0] = posten[i].name;
-                beleuchtung[1] = "" + posten[i].preis;
+                beleuchtungW[0] = posten[i].name;
+                beleuchtungW[1] = "" + posten[i].preis;
 
             }
             else if (target.id == "check" + i || target.id == "stepper" + i) {

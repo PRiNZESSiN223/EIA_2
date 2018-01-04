@@ -13,11 +13,10 @@ var Aufgabe10;
     var checkedId = [];
     var baumArt = [Aufgabe10.posten[0].name, "" + Aufgabe10.posten[0].preis];
     var halter = ["kein Halter", "0"];
-    var beleuchtung = [];
+    var beleuchtungW = [];
     var schmuck = [];
     var rabatt = 0.75;
     var baumGanz = false;
-    beleuchtung = [Aufgabe10.posten[9].name, "" + Aufgabe10.posten[9].preis];
     function createElements() {
         //Baumart:
         var baumart = document.getElementById("baumart");
@@ -33,6 +32,9 @@ var Aufgabe10;
         beleuchtung.appendChild(selectBox2);
         var schmuckartikel = document.getElementById("schmuckartikel");
         for (var i = 0; i < Aufgabe10.posten.length; i++) {
+            if (Aufgabe10.posten[i].art == "Beleuchtung" && Aufgabe10.posten[i].preis > 0) {
+                beleuchtungW = [Aufgabe10.posten[i].name, "" + Aufgabe10.posten[i].preis];
+            }
             if (Aufgabe10.posten[i].art == "Baumart") {
                 var opt = document.createElement("option");
                 opt.innerText = Aufgabe10.posten[i].name;
@@ -182,8 +184,8 @@ var Aufgabe10;
                 halter[1] = "" + Aufgabe10.posten[i].preis;
             }
             else if (target.value == Aufgabe10.posten[i].name && target.id == "selectBeleuchtung") {
-                beleuchtung[0] = Aufgabe10.posten[i].name;
-                beleuchtung[1] = "" + Aufgabe10.posten[i].preis;
+                beleuchtungW[0] = Aufgabe10.posten[i].name;
+                beleuchtungW[1] = "" + Aufgabe10.posten[i].preis;
             }
             else if (target.id == "check" + i || target.id == "stepper" + i) {
                 schmuck[i] = [Aufgabe10.posten[i].name, "" + (Aufgabe10.posten[i].preis * parseInt(werte[i].value))];
@@ -193,7 +195,7 @@ var Aufgabe10;
         gesamtpreis = parseFloat(baumArt[1]) + parseFloat(halter[1]);
         korb.innerHTML += "" + baumArt[0] + " " + baumArt[1] + "€ <p></p>";
         korb.innerHTML += "" + halter[0] + " " + halter[1] + "€ <p></p>";
-        korb.innerHTML += "" + beleuchtung[0] + " " + beleuchtung[1] + "€ <p></p>";
+        korb.innerHTML += "" + beleuchtungW[0] + " " + beleuchtungW[1] + "€ <p></p>";
         for (var i = 0; i < werte.length; i++) {
             if (check[i] != null) {
                 if (check[i].checked == true) {
