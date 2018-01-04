@@ -13,10 +13,11 @@ var Aufgabe10;
     var checkedId = [];
     var baumArt = [Aufgabe10.posten[0].name, "" + Aufgabe10.posten[0].preis];
     var halter = ["kein Halter", "0"];
-    var beleuchtung = [Aufgabe10.posten[9].name, "" + Aufgabe10.posten[9].preis];
+    var beleuchtung = [];
     var schmuck = [];
     var rabatt = 0.75;
     var baumGanz = false;
+    beleuchtung = [Aufgabe10.posten[9].name, "" + Aufgabe10.posten[9].preis];
     function createElements() {
         //Baumart:
         var baumart = document.getElementById("baumart");

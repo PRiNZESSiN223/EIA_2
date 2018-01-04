@@ -14,13 +14,19 @@ namespace Aufgabe10 {
     
     var baumArt: string[] = [posten[0].name, "" + posten[0].preis];
     var halter: string[] = ["kein Halter", "0"];
-    var beleuchtung: string[] = [posten[9].name, "" + posten[9].preis];
+    var beleuchtungW: string[] = [];
     var schmuck: string[][] = [];
     var rabatt : number = 0.75;
     var baumGanz : boolean = false;
 
+    
+    
     function createElements(): void {
         //Baumart:
+        
+        
+        
+        
         let baumart: HTMLDivElement = <HTMLDivElement>document.getElementById("baumart");
         let selectBox: HTMLSelectElement = document.createElement("select");
 
@@ -39,6 +45,10 @@ namespace Aufgabe10 {
         let schmuckartikel: HTMLDivElement = <HTMLDivElement>document.getElementById("schmuckartikel");
 
         for (let i: number = 0; i < posten.length; i++) {
+            
+            if (posten[i].art == "Beleuchtung" && posten[i].preis > 0) {
+              beleuchtungW = [posten[i].name, "" + posten[i].preis];
+            }
             if (posten[i].art == "Baumart") {
                 var opt: HTMLElement = document.createElement("option");
                 opt.innerText = posten[i].name;
