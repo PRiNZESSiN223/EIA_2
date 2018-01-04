@@ -7,6 +7,7 @@ namespace Aufgabe10 {
     }
 
     export let posten: Bestellposten[] = [
+        { art: "Baumart", name: "Kein Baum", preis: 0 },
         { art: "Baumart", name: "Nordmanntanne", preis: 31.55 },
         { art: "Baumart", name: "Blaufichte", preis: 48.36 },
         { art: "Baumart", name: "Fichte", preis: 29.99 },
@@ -15,6 +16,7 @@ namespace Aufgabe10 {
         { art: "Halter", name: "gold", preis: 24.63},
         { art: "Halter", name: "silber", preis: 20.47},
         { art: "Halter", name: "dunkelgrün", preis: 8.68},
+        { art: "Beleuchtung", name: "Keine Lichter", preis: 0},
         { art: "Beleuchtung", name: "Lichterkette", preis: 31.55},
         { art: "Beleuchtung", name: "Kerzen", preis: 22.85},
         { art: "Schmuck", name: "Kugel, bunt gestreift", preis: 2.11},
