@@ -237,7 +237,7 @@ namespace Aufgabe10 {
 
         korb.innerHTML += "" + halter[0] + " " + halter[1] + "€ <p></p>";
 
-        korb.innerHTML += "" + beleuchtung[0] + " " + beleuchtung[1] + "€ <p></p>";
+        korb.innerHTML += "" + beleuchtungW[0] + " " + beleuchtungW[1] + "€ <p></p>";
         for (let i: number = 0; i < werte.length; i++) {
             if(check[i] != null){
             if (check[i].checked == true) {
