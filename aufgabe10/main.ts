@@ -46,7 +46,7 @@ namespace Aufgabe10 {
 
         for (let i: number = 0; i < posten.length; i++) {
             
-            if (posten[i].art == "Beleuchtung" && posten[i].preis > 0) {
+            if (posten[i].art == "Beleuchtung" && posten[i].preis == 0) {
               beleuchtungW = [posten[i].name, "" + posten[i].preis];
             }
             if (posten[i].art == "Baumart") {

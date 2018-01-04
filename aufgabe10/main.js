@@ -32,7 +32,7 @@ var Aufgabe10;
         beleuchtung.appendChild(selectBox2);
         var schmuckartikel = document.getElementById("schmuckartikel");
         for (var i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Beleuchtung" && Aufgabe10.posten[i].preis > 0) {
+            if (Aufgabe10.posten[i].art == "Beleuchtung" && Aufgabe10.posten[i].preis == 0) {
                 beleuchtungW = [Aufgabe10.posten[i].name, "" + Aufgabe10.posten[i].preis];
             }
             if (Aufgabe10.posten[i].art == "Baumart") {
