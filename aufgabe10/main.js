@@ -11,10 +11,12 @@ var Aufgabe10;
     var zusatz;
     var label;
     var checkedId = [];
-    var baumArt = [Aufgabe10.posten[0].name, "" + Aufgabe10.posten[1].preis];
-    var halter = ["Halter", " noch auswählen 0"];
-    var beleuchtung = [Aufgabe10.posten[8].name, "" + Aufgabe10.posten[8].preis];
+    var baumArt = [Aufgabe10.posten[0].name, "" + Aufgabe10.posten[0].preis];
+    var halter = ["kein Halter", "0"];
+    var beleuchtung = [Aufgabe10.posten[9].name, "" + Aufgabe10.posten[9].preis];
     var schmuck = [];
+    var rabatt = 0.75;
+    var baumGanz = false;
     function createElements() {
         //Baumart:
         var baumart = document.getElementById("baumart");
@@ -159,10 +161,6 @@ var Aufgabe10;
         var werte = [];
         var check = [];
         var gesamtpreis = 0;
-        for (var i = 10; i < 23; i++) {
-            werte[i] = document.getElementById("stepper" + i);
-            check[i - 10] = document.getElementById("check" + i);
-        }
         var korb = document.getElementById("zusammenfassung");
         korb.style.width = "40%";
         korb.style.height = "auto";
@@ -170,6 +168,10 @@ var Aufgabe10;
         korb.innerHTML = "<span>Warenkorb</span> <p></p>";
         console.log(target.value);
         for (var i = 0; i < Aufgabe10.posten.length; i++) {
+            if (Aufgabe10.posten[i].art == "Schmuck") {
+                werte[i] = document.getElementById("stepper" + i);
+                check[i] = document.getElementById("check" + i);
+            }
             if (target.value == Aufgabe10.posten[i].name && target.id == "selectBaumart") {
                 baumArt[0] = Aufgabe10.posten[i].name;
                 baumArt[1] = "" + Aufgabe10.posten[i].preis;
@@ -183,7 +185,7 @@ var Aufgabe10;
                 beleuchtung[1] = "" + Aufgabe10.posten[i].preis;
             }
             else if (target.id == "check" + i || target.id == "stepper" + i) {
-                schmuck[i - 10] = [Aufgabe10.posten[i].name, "" + (Aufgabe10.posten[i].preis * parseInt(werte[i].value))];
+                schmuck[i] = [Aufgabe10.posten[i].name, "" + (Aufgabe10.posten[i].preis * parseInt(werte[i].value))];
             }
         }
         //write
@@ -191,11 +193,16 @@ var Aufgabe10;
         korb.innerHTML += "" + baumArt[0] + " " + baumArt[1] + "€ <p></p>";
         korb.innerHTML += "" + halter[0] + " " + halter[1] + "€ <p></p>";
         korb.innerHTML += "" + beleuchtung[0] + " " + beleuchtung[1] + "€ <p></p>";
-        for (var i = 0; i < 13; i++) {
-            if (check[i].checked == true) {
-                gesamtpreis += parseFloat(schmuck[i][1]);
-                korb.innerHTML += "" + schmuck[i][0] + " " + schmuck[i][1] + "€ <p></p>";
+        for (var i = 0; i < werte.length; i++) {
+            if (check[i] != null) {
+                if (check[i].checked == true) {
+                    gesamtpreis += parseFloat(schmuck[i][1]);
+                    korb.innerHTML += "" + schmuck[i][0] + " " + schmuck[i][1] + "€ <p></p>";
+                }
             }
+        }
+        if (parseFloat(baumArt[1]) > 0 && parseFloat(halter[1]) > 0) {
+            gesamtpreis *= rabatt;
         }
         korb.innerHTML += " Gesamtpreis : " + gesamtpreis + "€";
     }
@@ -209,7 +216,7 @@ var Aufgabe10;
         else {
             feedback.innerText = "Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.";
             feedback.style.color = "green";
-            document.body.replaceChild(feedback, feedback);
+            document.body.appendChild(feedback);
         }
     }
 })(Aufgabe10 || (Aufgabe10 = {}));

@@ -11,11 +11,13 @@ namespace Aufgabe10 {
     var zusatz: HTMLTextAreaElement;
     var label: HTMLLabelElement;
     let checkedId: string[] = [];
-
-    var baumArt: string[] = [posten[0].name, "" + posten[1].preis];
-    var halter: string[] = ["Halter", " noch auswählen 0"];
-    var beleuchtung: string[] = [posten[8].name, "" + posten[8].preis];
+    
+    var baumArt: string[] = [posten[0].name, "" + posten[0].preis];
+    var halter: string[] = ["kein Halter", "0"];
+    var beleuchtung: string[] = [posten[9].name, "" + posten[9].preis];
     var schmuck: string[][] = [];
+    var rabatt : number = 0.75;
+    var baumGanz : boolean = false;
 
     function createElements(): void {
         //Baumart:
@@ -181,10 +183,7 @@ namespace Aufgabe10 {
         let werte: HTMLInputElement[] = [];
         let check: HTMLInputElement[] = [];
         let gesamtpreis: number = 0;
-        for (let i: number = 10; i < 23; i++) {
-            werte[i] = <HTMLInputElement>document.getElementById("stepper" + i);
-            check[i - 10] = <HTMLInputElement>document.getElementById("check" + i);
-        }
+
         let korb: HTMLDivElement = <HTMLDivElement>document.getElementById("zusammenfassung");
         korb.style.width = "40%";
         korb.style.height = "auto";
@@ -193,7 +192,12 @@ namespace Aufgabe10 {
         console.log(target.value);
 
         for (let i: number = 0; i < posten.length; i++) {
-
+           
+            if(posten[i].art == "Schmuck"){
+            werte[i] = <HTMLInputElement>document.getElementById("stepper" + i);
+            check[i] = <HTMLInputElement>document.getElementById("check" + i);
+            }
+            
             if (target.value == posten[i].name && target.id == "selectBaumart") {
                 baumArt[0] = posten[i].name;
                 baumArt[1] = "" + posten[i].preis;
@@ -209,7 +213,7 @@ namespace Aufgabe10 {
 
             }
             else if (target.id == "check" + i || target.id == "stepper" + i) {
-                schmuck[i - 10] = [posten[i].name, "" + (posten[i].preis * parseInt(werte[i].value))];
+                schmuck[i] = [posten[i].name, "" + (posten[i].preis * parseInt(werte[i].value))];
 
             }
 
@@ -224,11 +228,17 @@ namespace Aufgabe10 {
         korb.innerHTML += "" + halter[0] + " " + halter[1] + "€ <p></p>";
 
         korb.innerHTML += "" + beleuchtung[0] + " " + beleuchtung[1] + "€ <p></p>";
-        for (let i: number = 0; i < 13; i++) {
+        for (let i: number = 0; i < werte.length; i++) {
+            if(check[i] != null){
             if (check[i].checked == true) {
                 gesamtpreis += parseFloat(schmuck[i][1]);
                 korb.innerHTML += "" + schmuck[i][0] + " " + schmuck[i][1] + "€ <p></p>";
             }
+                }
+        }
+        
+        if(parseFloat(baumArt[1])> 0 && parseFloat(halter[1])> 0 ){
+            gesamtpreis *= rabatt;
         }
         korb.innerHTML += " Gesamtpreis : " + gesamtpreis + "€";
 
@@ -246,7 +256,7 @@ namespace Aufgabe10 {
         else {
             feedback.innerText = "Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.";
             feedback.style.color = "green";
-            document.body.replaceChild(feedback,feedback);
+            document.body.appendChild(feedback);
         }
     }
 }
