@@ -98,6 +98,9 @@ namespace Aufgabe10 {
                 stepper.max = "15";
                 stepper.step = "1";
                 schmuckartikel.appendChild(stepper);
+                
+                let br: HTMLElement = document.createElement("br");
+                schmuckartikel.appendChild(br);
             }
         }
 

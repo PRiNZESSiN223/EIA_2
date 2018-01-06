@@ -81,6 +81,8 @@ var Aufgabe10;
                 stepper.max = "15";
                 stepper.step = "1";
                 schmuckartikel.appendChild(stepper);
+                var br = document.createElement("br");
+                schmuckartikel.appendChild(br);
             }
         }
         //Deine Daten:
