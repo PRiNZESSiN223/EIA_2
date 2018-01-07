@@ -1,14 +1,60 @@
-input:invalid {
-	background: #F0C060;
+body {
+	float: left;
+	font-family: "Arial";
+	color: black;
+	font-size: 1em;
+	margin-left: 4em;
+	width:100%;
+	overflow-x:hidden;
 }
 
-span{
-font-size: 1.5em;
+h1 {
+	color: #0B610B;
+	font-size: 2em;
 }
-#rabatt{
-	color:red;
-	position:absolute;
-	left:45%;
-	top:5em;
-	font-size:3em;
+
+h2 {
+	font-size: 1.2em;
+}
+
+input:invalid {
+	background-color: black;
+	color:white;
+}
+
+label::after {
+	display: block;
+}
+
+input {
+	margin: 0.5em;
+}
+
+button {
+	background-color: #0B610B;
+	color: white;
+    padding: 0.3em;
+    text-align: center;
+    display: inline-block;
+    font-size: 1em;
+    margin: 0.02em;
+    cursor: pointer;
+}
+#daten input {
+	display: block;
+	height: 10%;
+	width: 15%;
+}
+
+#zusammenfassung {
+	position: fixed;
+	right: 0em;
+	top: 0em;
+	padding: 1em;
+
+}
+
+
+div{
+	margin-top:2em;
 }
