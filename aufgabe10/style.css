@@ -8,14 +8,7 @@ body {
 	overflow-x:hidden;
 }
 
-h1 {
-	color: #0B610B;
-	font-size: 2em;
-}
 
-h2 {
-	font-size: 1.2em;
-}
 
 input:invalid {
 	background-color: black;
