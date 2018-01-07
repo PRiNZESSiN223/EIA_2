@@ -194,7 +194,7 @@ var Aufgabe10;
             }
         }
         //write
-        gesamtpreis = parseFloat(baumArt[1]) + parseFloat(halter[1]);
+        gesamtpreis = parseFloat(baumArt[1]) + parseFloat(halter[1]) + parseFloat(beleuchtungW[1]);
         korb.innerHTML += "" + baumArt[0] + " " + baumArt[1] + "€ <p></p>";
         korb.innerHTML += "" + halter[0] + " " + halter[1] + "€ <p></p>";
         korb.innerHTML += "" + beleuchtungW[0] + " " + beleuchtungW[1] + "€ <p></p>";
@@ -216,7 +216,7 @@ var Aufgabe10;
         if (name.checkValidity() == false || strasse.checkValidity() == false || hNr.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
             feedback.innerText = "Info zu deiner Bestellung: Du scheinst Deine Daten nicht korrekt angegeben zu haben. Bitte überprüfe sie nocheinmal.";
             feedback.style.color = "red";
-            document.body.appendChild(feedback);
+            -document.body.appendChild(feedback);
         }
         else {
             feedback.innerText = "Info zu deiner Bestellung: Deine Daten wurden korrekt angegeben, vielen Dank.";

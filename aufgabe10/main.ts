@@ -234,7 +234,7 @@ namespace Aufgabe10 {
         }
         //write
 
-        gesamtpreis = parseFloat(baumArt[1]) + parseFloat(halter[1]);
+        gesamtpreis = parseFloat(baumArt[1]) + parseFloat(halter[1]) + parseFloat(beleuchtungW[1]);
 
         korb.innerHTML += "" + baumArt[0] + " " + baumArt[1] + "€ <p></p>";
 
@@ -262,7 +262,7 @@ namespace Aufgabe10 {
         let feedback: HTMLDivElement = document.createElement("div");
         if (name.checkValidity() == false || strasse.checkValidity() == false || hNr.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
             feedback.innerText = "Info zu deiner Bestellung: Du scheinst Deine Daten nicht korrekt angegeben zu haben. Bitte überprüfe sie nocheinmal.";
-            feedback.style.color = "red";
+            feedback.style.color = "red";-
             document.body.appendChild(feedback);
 
         }
@@ -273,3 +273,4 @@ namespace Aufgabe10 {
         }
     }
 }
+
