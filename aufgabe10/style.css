@@ -55,5 +55,7 @@ div{
 #rabatt{
 	position:absolute;
 	left:80%;
-	top:10em;
+	top:7em;
+	color:red;
+	font-size:2em;
 }
