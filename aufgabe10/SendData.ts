@@ -26,7 +26,7 @@ namespace SendData {
 
     function sendRequest(_color: string): void {
         let xhr: XMLHttpRequest = new XMLHttpRequest();
-       xhr.open("GET", "https://prinzessin223.herokuapp.com?color=" + _color, true);
+       xhr.open("GET", "https://serverweihnachtenbaum.herokuapp.com?color=" + _color, true);
        // xhr.open("GET", "file:///Users/maxime/Documents/workspace/EIA_2_beta/aufgabe 11/EIA2-W17_Node-master/ServerTest.js" + _color, true);
         
         //xhr.open("GET", "https://eia2-w17-servertest.herokuapp.com?color=" + _color, true);
