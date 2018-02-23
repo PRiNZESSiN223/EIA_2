@@ -1,0 +1,22 @@
+button{
+	background-color:black;
+	color:red;
+	font-size:3em;
+}
+button:hover{
+	background-color:red;
+	color:black;
+	font-size:3em;
+}
+
+#buttons{
+	display:none;
+}
+
+@media screen and (max-width: 60em){
+	#buttons{
+	display:block;
+	font-size:0.5em;
+}
+
+}
